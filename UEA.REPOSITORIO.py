@@ -1,15 +1,3 @@
-"""
-Compatibilidad de salida UTF-8 en Windows
-
-En consolas Windows antiguas la codificación por defecto puede no soportar
-ciertos caracteres Unicode usados en la presentación (por ejemplo '═', '•', '✨').
-Esto puede lanzar un UnicodeEncodeError como "'charmap' codec can't encode characters...".
-
-Aquí intentamos reconfigurar stdout/stderr a UTF-8 de forma segura. Si la
-versión de Python tiene sys.stdout.reconfigure (3.7+), la usamos; si no, intentamos
-envolver los buffers con TextIOWrapper. Si todo falla, silenciamos el error y
-dejamos que Python use la salida por defecto (mejor que romper el programa).
-"""
 import sys
 import io
 
